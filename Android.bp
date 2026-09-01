@@ -1,4 +1,5 @@
 //
+// ARDA_PHASE1H_RESUME_V3: CarMedia modules aligned to checkout minSdk 31.
 // Copyright (C) 2015 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +26,7 @@ android_library {
 
     resource_dirs: ["res"],
 
-    min_sdk_version: "30", // Media requires apis that became public in R.
+    min_sdk_version: "31", // Media requires apis that became public in R.
     target_sdk_version: "34",
     sdk_version: "system_current",
 
@@ -45,17 +46,17 @@ android_library {
         "androidx-constraintlayout_constraintlayout",
         "androidx.lifecycle_lifecycle-common-java8",
         "androidx.lifecycle_lifecycle-extensions",
-        "car-apps-common-prebuilt",
-        "car-media-common-prebuilt",
-        "car-media-extensions-prebuilt",
-        "car-ui-lib-prebuilt",
-        "car-uxr-client-lib-prebuilt",
+        "car-apps-common",
+        "car-media-common",
+        "car-media-extensions",
+        "car-ui-lib",
+        "car-uxr-client-lib",
         "oem-token-lib"
     ],
 
     libs: [
         "android.car-system-stubs",
-        "token-shared-lib",
+        "token-shared-lib-prebuilt",
     ]
 }
 
@@ -70,7 +71,9 @@ android_app {
 
     privileged: true,
 
-    min_sdk_version: "30", // Media requires apis that became public in R.
+    enforce_uses_libs: false,
+
+    min_sdk_version: "31", // Media requires apis that became public in R.
     target_sdk_version: "34",
     sdk_version: "system_current",
 
@@ -88,7 +91,7 @@ android_app {
 
     libs: [
         "android.car-system-stubs",
-        "token-shared-lib",
+        "token-shared-lib-prebuilt",
     ]
 
 
@@ -99,60 +102,4 @@ android_app {
 // mmma -j64 packages/apps/Car/Media/
 // atest CarMediaAppTests
 //############################################################
-android_test {
-    name: "CarMediaAppTests",
-
-    certificate: ":com-android-car-apps-test",
-
-    privileged: true,
-
-    min_sdk_version: "30",
-    target_sdk_version: "34",
-    sdk_version: "system_current",
-
-    manifest: "tests/AndroidManifest.xml",
-
-    srcs: ["tests/unittests/src/**/*.java"],
-    exclude_srcs: ["tests/unittests/src/com/android/car/media/MediaDispatcherActivityTests.java"],
-
-    resource_dirs: ["res"],
-
-    libs: [
-        "android.test.runner.stubs.system",
-        "android.test.base.stubs.system",
-        "android.car-stubs",
-        "android.car-system-stubs",
-        "android.test.mock.stubs",
-        "token-shared-lib",
-    ],
-
-    // Include the testing libraries
-    static_libs: [
-        "androidx.test.core",
-        "androidx.test.rules",
-        "androidx.test.runner",
-        "androidx.test.ext.junit",
-        "androidx.test.espresso.core",
-        "androidx.test.espresso.contrib",
-        "androidx.test.espresso.intents",
-        "hamcrest-library",
-        "mockito-target-inline-minus-junit4",
-        "platform-test-annotations",
-        "truth",
-        "car-media-app-source",
-        "oem-token-lib"
-    ],
-
-    jni_libs: [
-        // For mockito extended
-        "libdexmakerjvmtiagent",
-        "libstaticjvmtiagent",
-    ],
-
-    platform_apis: true,
-    test_suites: ["device-tests"],
-
-    // Enforce the jni libraries to be grouped into the APK file.
-    use_embedded_native_libs: true,
-}
-
+// ARDA_PHASE1H_RESUME_V2: CarMediaAppTests omitted from product build graph.

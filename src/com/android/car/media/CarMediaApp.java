@@ -27,7 +27,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
-import com.android.car.media.common.MediaItemMetadata;
 import com.android.car.media.common.source.MediaBrowserConnector;
 import com.android.car.media.common.source.MediaModels;
 import com.android.car.media.widgets.AppBarController;
@@ -41,7 +40,7 @@ public class CarMediaApp extends Application {
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        MediaItemMetadata.clearPlaceholderCache();
+        // ARDA_PHASE1H_RESUME_V5: checkout car-media-common has no clearPlaceholderCache API.
     }
 
     @Override

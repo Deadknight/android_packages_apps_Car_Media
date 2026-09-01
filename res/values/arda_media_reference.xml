@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ARDA_MEDIA_PHASE1H_CARMEDIA_REFERENCE_VISUAL -->
+    <color name="arda_media_reference_primary_text">#FFFFFFFF</color>
+    <color name="arda_media_reference_secondary_text">#C9FFFFFF</color>
+    <color name="arda_media_reference_progress">#FFF4EE</color>
+    <color name="arda_media_reference_progress_track">#58FFFFFF</color>
+</resources>
